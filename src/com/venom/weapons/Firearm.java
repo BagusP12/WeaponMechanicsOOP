@@ -13,7 +13,7 @@ public abstract class Firearm {
     int ammoCount;
     int maxMagazineAmmo;
     int reservedAmmo;
-    int selectMode;
+    int rateOfFire;
 
     double accuracy;
     double zoom;
@@ -29,7 +29,7 @@ public abstract class Firearm {
         this.ammoCount = ammoCount;
         this.maxMagazineAmmo = ammoCount;
         this.reservedAmmo = reservedAmmo;
-        this.selectMode = rateOfFire;
+        this.rateOfFire = rateOfFire;
         this.accuracy = accuracy;
         this.magazineReload = magazineReload;
         zoom = 0;
@@ -39,7 +39,7 @@ public abstract class Firearm {
         System.out.println("Name\t\t: " + this.name);
         System.out.println("Type\t\t: " + this.type);
         System.out.println("Damage\t\t: " + this.damage);
-        System.out.println("Rate of Fire\t: " + this.selectMode + "RPM");
+        System.out.println("Rate of Fire\t: " + this.rateOfFire + "RPM");
         System.out.println("Accuracy\t: " + accuracy + "%");
         System.out.println("Ammo\t\t: " + getAmmoStatus());
         if (attachment.size() > 0) {
