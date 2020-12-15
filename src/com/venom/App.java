@@ -10,6 +10,8 @@ public class App {
 
         Handgun colt1860Army = new Handgun("Colt 1860 Army", "Revolver", 35, 6, 31, 900, 85, false);
 
+        AssaultRifle m4a1 = new AssaultRifle("M4A1", "Assault Rifle", 30, 30, 120, 1300, 80, 3);
+
         Scope vortexScope = new Scope("Vortex Spitfire 3x Scope", "Scope", 3);
 
         LaserSight gnpLaser = new LaserSight("G&P T1 Laser Sight", "Laser Sight", 5);
@@ -23,6 +25,30 @@ public class App {
         desertEagle.installAttachment(vortexScope);
         desertEagle.installAttachment(gnpLaser);
         desertEagle.weaponInfo();
+
+        m4a1.weaponInfo();
+        m4a1.changeFireMode("burst");
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.changeFireMode("single");
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.changeFireMode("auto");
+        m4a1.shoot();
+        m4a1.changeFireMode("single");
+        m4a1.shoot();
+
+        m4a1.installAttachment(vortexScope);
+        m4a1.weaponInfo();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.shoot();
+        m4a1.pickupAmmo(53);
 
     }
     

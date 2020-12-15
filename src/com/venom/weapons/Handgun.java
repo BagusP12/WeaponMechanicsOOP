@@ -15,7 +15,7 @@ public class Handgun extends Firearm {
         }
     }
 
-    private void shootingMechanics() {
+    void shootingMechanics() {
         showAmmoStatus();;
         ammoCount--;
     }
