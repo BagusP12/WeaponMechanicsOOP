@@ -41,7 +41,7 @@ public abstract class Firearm {
         System.out.println("Name\t\t: " + this.name);
         System.out.println("Type\t\t: " + this.type);
         System.out.println("Damage\t\t: " + this.damage);
-        System.out.println("Rate of Fire\t: " + this.rateOfFire + "RPM");
+        System.out.println("Rate of Fire\t: " + this.rateOfFire + " RPM");
         System.out.println("Accuracy\t: " + accuracy + "%");
         System.out.println("Recoil\t\t: " + recoil);
         System.out.println("Ammo\t\t: " + getAmmoStatus());
@@ -75,8 +75,9 @@ public abstract class Firearm {
     }
 
     public void installAttachment(Attachment attachment) {
+        //BUG if attachment is from different object
         if (!this.attachment.contains(attachment)) {
-            System.out.println("Installing attachment : " + attachment.getName());
+            System.out.println("Installing attachment...");
             this.attachment.add(attachment);
             if(attachment.getClass() == Scope.class) {
                 addZoom(attachment);
@@ -89,25 +90,47 @@ public abstract class Firearm {
         } else {
             System.out.println("Attachment " + attachment.getName() + " already installed!");
         }
-
     }
 
-    
-    public void addAccuracy(Attachment attachment) {
-        accuracy += attachment.getAttachmentValue();
-    }
-    
-    public void addZoom(Attachment attachment) {
+    void addZoom(Attachment attachment) {
         zoom = attachment.getAttachmentValue();
     }
     
-    private void removeRecoil(Attachment attachment) {
+    void addAccuracy(Attachment attachment) {
+        accuracy += attachment.getAttachmentValue();
+    }
+    
+    void removeRecoil(Attachment attachment) {
         recoil -= attachment.getAttachmentValue();
     }
 
     public void removeAttachment(Attachment attachment) {
-        this.attachment.remove(attachment);
-        System.out.println("Attachment removed : " + attachment.getName());
+        if (this.attachment.contains(attachment)) {
+            System.out.println("Removing attachment...");
+            if(attachment.getClass() == Scope.class) {
+                restoreZoom(attachment);
+            } else if (attachment.getClass() == LaserSight.class) {
+                restoreAccuracy(attachment);
+            } else if (attachment.getClass() == Grip.class) {
+                restoreRecoil(attachment);
+            }
+            this.attachment.remove(attachment);
+            System.out.println("Attachment removed : " + attachment.getName());
+        } else {
+            System.out.println("Attachment " + attachment.getName() + " already installed!");
+        }
     }
+
+    void restoreZoom(Attachment attachment) {
+        zoom = 0;
+    }
+
+	void restoreAccuracy(Attachment attachment) {
+        accuracy -= attachment.getAttachmentValue();
+    }
+
+    void restoreRecoil(Attachment attachment) {
+        recoil += attachment.getAttachmentValue();
+	}
 
 }

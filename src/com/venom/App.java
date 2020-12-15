@@ -21,17 +21,16 @@ public class App {
 
         Grip fabGrip = new Grip("FAB Finger Grooves REG", "Fore Grip", 10);
 
-        spas12.weaponInfo();
+        m4a1.weaponInfo();
 
-        spas12.shoot();
-        spas12.shoot();
-        spas12.shoot();
+        m4a1.installAttachment(gnpLaser);
+        m4a1.installAttachment(fabGrip);
 
-        spas12.reload();
+        m4a1.weaponInfo();
 
-        spas12.changeFireMode("auto");
+        m4a1.removeAttachment(gnpLaser);
 
-        spas12.shoot();
+        m4a1.weaponInfo();
 
     }
     
