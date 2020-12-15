@@ -65,8 +65,8 @@ public abstract class Firearm {
     }
 
     public abstract void shoot();
-    public abstract void reload();
     abstract void shootingMechanics();
+    public abstract void reload();
 
     public void pickupAmmo(int amount) {
         reservedAmmo += amount;
@@ -75,16 +75,21 @@ public abstract class Firearm {
     }
 
     public void installAttachment(Attachment attachment) {
-        this.attachment.add(attachment);
-        //addAccuracy(attachment);
-        if(attachment.getClass() == Scope.class) {
-            addZoom(attachment);
-        } else if (attachment.getClass() == LaserSight.class) {
-            addAccuracy(attachment);
-        } else if (attachment.getClass() == Grip.class) {
-            removeRecoil(attachment);
+        if (!this.attachment.contains(attachment)) {
+            System.out.println("Installing attachment : " + attachment.getName());
+            this.attachment.add(attachment);
+            if(attachment.getClass() == Scope.class) {
+                addZoom(attachment);
+            } else if (attachment.getClass() == LaserSight.class) {
+                addAccuracy(attachment);
+            } else if (attachment.getClass() == Grip.class) {
+                removeRecoil(attachment);
+            }
+            System.out.println("Attachment installed : " + attachment.getName());
+        } else {
+            System.out.println("Attachment " + attachment.getName() + " already installed!");
         }
-        System.out.println("Attachment installed : " + attachment.getName());
+
     }
 
     
@@ -98,6 +103,11 @@ public abstract class Firearm {
     
     private void removeRecoil(Attachment attachment) {
         recoil -= attachment.getAttachmentValue();
+    }
+
+    public void removeAttachment(Attachment attachment) {
+        this.attachment.remove(attachment);
+        System.out.println("Attachment removed : " + attachment.getName());
     }
 
 }
