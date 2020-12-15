@@ -6,9 +6,12 @@ public abstract class Attachment {
     private String type;
     private String desc;
 
-    public Attachment(String name, String type) {
+    private int value;
+
+    public Attachment(String name, String type, int value) {
         this.name = name;
         this.type = type;
+        this.value = value;
     }
 
     public String getName() {
@@ -21,6 +24,10 @@ public abstract class Attachment {
 
     public String getDesc() {
         return desc;
+    }
+
+    public int getValue() {
+        return value;
     }
     
     void setDesc(String desc) {

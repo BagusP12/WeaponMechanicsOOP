@@ -16,13 +16,14 @@ public abstract class Firearm {
     int rateOfFire;
 
     double accuracy;
+    double recoil;
     double zoom;
 
     boolean magazineReload;
 
     private List<Attachment> attachment = new ArrayList<Attachment>();
 
-    public Firearm(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, boolean magazineReload) {
+    public Firearm(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, double recoil, boolean magazineReload) {
         this.name = name;
         this.type = type;
         this.damage = damage;
@@ -31,6 +32,7 @@ public abstract class Firearm {
         this.reservedAmmo = reservedAmmo;
         this.rateOfFire = rateOfFire;
         this.accuracy = accuracy;
+        this.recoil = recoil;
         this.magazineReload = magazineReload;
         zoom = 0;
     }
@@ -41,6 +43,7 @@ public abstract class Firearm {
         System.out.println("Damage\t\t: " + this.damage);
         System.out.println("Rate of Fire\t: " + this.rateOfFire + "RPM");
         System.out.println("Accuracy\t: " + accuracy + "%");
+        System.out.println("Recoil\t\t: " + recoil);
         System.out.println("Ammo\t\t: " + getAmmoStatus());
         if (attachment.size() > 0) {
             System.out.println("Attachment\t: " + attachment.size());
@@ -78,16 +81,23 @@ public abstract class Firearm {
             addZoom(attachment);
         } else if (attachment.getClass() == LaserSight.class) {
             addAccuracy(attachment);
+        } else if (attachment.getClass() == Grip.class) {
+            removeRecoil(attachment);
         }
         System.out.println("Attachment installed : " + attachment.getName());
     }
 
+    
     public void addAccuracy(Attachment attachment) {
         accuracy += attachment.getAttachmentValue();
     }
-
+    
     public void addZoom(Attachment attachment) {
         zoom = attachment.getAttachmentValue();
     }
     
+    private void removeRecoil(Attachment attachment) {
+        recoil -= attachment.getAttachmentValue();
+    }
+
 }

@@ -2,16 +2,13 @@ package attachment;
 
 public class Scope extends Attachment {
 
-    private int value;
-
     public Scope(String name, String type, int value) {
-        super(name, type);
-        this.value = value;
-        setDesc(value + "x Zoom In");
+        super(name, type, value);
+        setDesc(value + "x zoom in");
     }
 
     public int getAttachmentValue() {
-        return value;
+        return getValue();
     }
 
 }

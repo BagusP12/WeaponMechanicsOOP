@@ -2,8 +2,8 @@ package weapons;
 
 public class Handgun extends Firearm {
 
-    public Handgun(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, boolean magazineReload) {
-        super(name, type, damage, ammoCount, reservedAmmo, rateOfFire, accuracy, magazineReload);
+    public Handgun(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, double recoil, boolean magazineReload) {
+        super(name, type, damage, ammoCount, reservedAmmo, rateOfFire, accuracy, recoil, magazineReload);
     }
 
     public void shoot() {

@@ -5,8 +5,8 @@ public class AssaultRifle extends Firearm {
     private String selectMode;
     private int burstRate = 3;
 
-    public AssaultRifle(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, int burstRate) {
-        super(name, type, damage, ammoCount, reservedAmmo, rateOfFire, accuracy, true);
+    public AssaultRifle(String name, String type, int damage, int ammoCount, int reservedAmmo, int rateOfFire, double accuracy, double recoil, int burstRate) {
+        super(name, type, damage, ammoCount, reservedAmmo, rateOfFire, accuracy, recoil, true);
         this.selectMode = "auto";
         this.burstRate = burstRate;
     }
