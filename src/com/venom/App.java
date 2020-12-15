@@ -15,6 +15,7 @@ public class App {
         Shotgun spas12 = new Shotgun("Franchi SPAS-12", "Shotgun", 35, 7, 42, 80, 40, 90, false);
 
         Scope vortexScope = new Scope("Vortex Spitfire 3x Scope", "Scope", 3);
+
         Scope ironSight = new Scope("Iron Sight", "Scope", 2);
 
         LaserSight gnpLaser = new LaserSight("G&P T1 Laser Sight", "Laser Sight", 5);
@@ -23,12 +24,8 @@ public class App {
 
         m4a1.weaponInfo();
 
-        m4a1.installAttachment(gnpLaser);
-        m4a1.installAttachment(fabGrip);
-
-        m4a1.weaponInfo();
-
-        m4a1.removeAttachment(gnpLaser);
+        m4a1.installAttachment(vortexScope);
+        m4a1.installAttachment(ironSight);
 
         m4a1.weaponInfo();
 
